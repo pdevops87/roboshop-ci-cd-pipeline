@@ -129,3 +129,19 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl enable docker
 sudo systemctl start docker
 fi
+
+Execute sudo ./bin/installdependencies.sh to install any missing Dotnet Core 6.0 dependencies.
+
+
+Create the group first (groupadd docker) → ensures the group exists.
+Add user to the group (usermod -aG docker runner) → gives the user permissions.
+If you skip groupadd:
+usermod -aG docker runner
+…will fail with:
+usermod: group 'docker' does not exist
+If the group already exists on the system (common on most Docker-installed hosts), groupadd docker is harmless if you use || true.
+
+
+sudo useradd -m runner
+-m creates a home directory /home/runner.
+This user will run commands in the container or system without being root.
