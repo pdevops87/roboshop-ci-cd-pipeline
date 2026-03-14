@@ -1,5 +1,4 @@
 FROM                 docker.io/redhat/ubi9
-RUN                  ./bin/installdependencies.sh to install
 RUN dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 RUN dnf install -y docker-ce-cli
 RUN  dnf clean all
@@ -9,6 +8,7 @@ RUN                  usermod -aG docker runner
 RUN                  mkdir actions-runner
 USER                 runner
 WORKDIR              /home/runner/actions-runner
+RUN                   ./bin/installdependencies.sh install
 RUN                  curl -o actions-runner-linux-x64-2.332.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
 RUN                   tar xzf ./actions-runner-linux-x64-2.332.0.tar.gz
 RUN                  ./config.sh --unattended --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token     A5LROCZLHZ4RBNO4PFQ5WRTJWVKEI --name sample --replace
