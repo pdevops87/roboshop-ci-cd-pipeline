@@ -1,4 +1,5 @@
 FROM                 docker.io/redhat/ubi9
+RUN                  ./bin/installdependencies.sh to install
 RUN dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 RUN dnf install -y docker-ce-cli
 RUN  dnf clean all
