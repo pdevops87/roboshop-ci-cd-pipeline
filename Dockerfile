@@ -1,8 +1,8 @@
 FROM                 docker.io/redhat/ubi9
-RUN dnf -y install curl tar \
-    && dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo \
-    && dnf install -y docker-ce-cli \
-    && dnf clean all
+RUN dnf -y install curl tar
+RUN dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+RUN dnf install -y docker-ce-cli
+RUN  dnf clean all
 RUN                  groupadd  docker
 RUN                  useradd -m runner
 RUN                  usermod -aG docker runner
