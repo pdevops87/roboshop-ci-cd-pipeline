@@ -2,7 +2,7 @@ FROM                 docker.io/redhat/ubi9
 RUN dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 RUN dnf install -y docker-ce-cli
 RUN  dnf clean all
-RUN                  groupadd  docker
+RUN                  groupadd  docker || true
 RUN                  useradd -m runner
 RUN                  usermod -aG docker runner
 RUN                  mkdir actions-runner
