@@ -80,3 +80,52 @@ GitHub CLI (gh) → needed to create/manage repos directly on GitHub from termin
 
 
 *** roboshop-apps-import --- labauto
+
+
+---------------------------------------------------------------------------------------
+history
+========
+1  13/01/26 18:30:51 sudo dnf update -y
+2  13/01/26 18:30:51 sudo dnf update -y
+3  13/01/26 18:37:26 sudo init 0
+4  14/03/26 08:04:31 sudo su -
+5  14/03/26 08:07:41  mkdir actions-runner && cd actions-runner
+6  14/03/26 08:07:56  curl -o actions-runner-linux-x64-2.3                                                                                                             32.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.332.0/acti                                                                                                             ons-runner-linux-x64-2.332.0.tar.gz
+7  14/03/26 08:08:10 curl -o actions-runner-linux-x64-2.332.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
+8  14/03/26 08:08:18 tar xzf ./actions-runner-linux-x64-2.332.0.tar.gz
+9  14/03/26 08:08:29 ls -l
+10  14/03/26 08:08:31 ./config.sh --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token A5LROC7RURLO2UCKKNGRY6DJWT4BS
+11  14/03/26 08:09:22 ./config.sh --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token A5LROC6LCPQKFHG4KGKCWN3JWUS3G
+12  14/03/26 08:09:38 ls -l
+13  14/03/26 08:09:42 ./config.sh --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token A5LROC6LCPQKFHG4KGKCWN3JWUS3G
+14  14/03/26 08:09:55 ./config.sh --help
+15  14/03/26 08:10:40 ./config.sh --unattended --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token A5LROC6LCPQKFHG4KGKCWN3JWUS3G --replace
+16  14/03/26 08:11:08 ls -l
+17  14/03/26 08:11:27 ./config.sh remove
+18  14/03/26 08:11:57 ./config.sh --unattended --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token A5LROC6LCPQKFHG4KGKCWN3JWUS3G --replace
+19  14/03/26 08:12:13 ls -l
+20  14/03/26 08:12:56 ./svc.sh
+21  14/03/26 08:13:09 sudo ./svc.sh
+22  14/03/26 08:13:15 sudo ./svc.sh install
+23  14/03/26 08:13:22 sudo ./svc.sh start
+24  14/03/26 08:13:33 ls -l
+25  14/03/26 08:15:25 ./run.sh
+26  14/03/26 08:15:42 ./svc.sh --help
+27  14/03/26 08:15:58 sudo ./svc.sh --help
+28  14/03/26 08:16:08 sudo ./svc.sh uninstall
+29  14/03/26 08:16:14 ./run.sh
+30  14/03/26 08:17:05 ./run.sh --help
+31  14/03/26 08:17:43 ./run.sh remove
+32  14/03/26 08:18:08 sudo ./svc.sh install
+33  14/03/26 08:18:16 sudo ./svc.sh start
+34  14/03/26 08:18:21 history
+
+
+
+if [ "$1" = "install"  ]; then
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo systemctl enable docker
+sudo systemctl start docker
+fi
