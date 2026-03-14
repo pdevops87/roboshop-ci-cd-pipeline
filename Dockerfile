@@ -1,5 +1,5 @@
 FROM                 docker.io/redhat/ubi9
-RUN dnf -y install curl tar git procps yum-utils \
+RUN dnf -y install curl tar \
     && dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo \
     && dnf install -y docker-ce-cli \
     && dnf clean all
