@@ -15,7 +15,7 @@ WORKDIR               /home/runner/actions-runner
 RUN                   ./bin/installdependencies.sh
 USER                  runner
 WORKDIR              /home/runner/actions-runner
-RUN                  ./config.sh --unattended --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token     A5LROCZLHZ4RBNO4PFQ5WRTJWVKEI --name sample --replace
+RUN                  ./config.sh --unattended --url https://github.com/pdevops87/roboshop-ci-cd-pipeline --token     A5LROC5B7VDWODNGZHWRIDDJWVU6K --name sample --replace
 COPY                 run.sh run.sh
 
 ENTRYPOINT           ["bash","run.sh"]
