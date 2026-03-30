@@ -1,10 +1,10 @@
 FROM                 docker.io/redhat/ubi9
-# RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-# RUN                  dnf install -y  docker-ce-cli  libicu
-RUN                    dnf install -y libicu
-# RUN                  groupadd  docker || true
+RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+RUN                  dnf install -y  docker-ce-cli  libicu
+RUN                  dnf install -y libicu
+RUN                  groupadd  docker || true
 RUN                  useradd -m runner
-# RUN                  usermod -aG docker runner
+RUN                  usermod -aG docker runner
 RUN                  mkdir /home/runner/actions-runner
 RUN                  curl -o actions-runner-linux-x64-2.332.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
 RUN                  tar xzf ./actions-runner-linux-x64-2.332.0.tar.gz -C /home/runner/actions-runner
