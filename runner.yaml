@@ -18,7 +18,7 @@
         env:
           URL: "{{ URL }}"
           TOKEN: "{{ TOKEN }}"
-          NAME: "{{ NAME }}"
+          NAME: "{{ item }}"
       loop:
         - runner1
         - runner2
