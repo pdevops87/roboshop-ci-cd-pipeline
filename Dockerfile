@@ -1,7 +1,6 @@
 FROM                 docker.io/redhat/ubi9
 RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 RUN                  dnf install -y  docker-ce-cli  libicu
-RUN                  dnf install -y libicu
 RUN                  groupadd  docker || true
 RUN                  useradd -m runner
 RUN                  usermod -aG docker runner

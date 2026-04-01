@@ -12,6 +12,7 @@ if [ -z "${NAME}" ]; then
   echo Input Github runner label is missing
   exit 1;
 fi
+
 ./config.sh --unattended --url ${URL} --token ${TOKEN} --name ${NAME} --replace
 
 ./run.sh
