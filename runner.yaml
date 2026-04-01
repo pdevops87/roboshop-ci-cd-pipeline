@@ -20,6 +20,8 @@
     - name: install python-docker
       ansible.builtin.dnf:
         name: python3-docker
+        state: present
+      become: yes
 
     - name: Create a data container
       community.docker.docker_container:
