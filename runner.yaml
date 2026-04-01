@@ -4,10 +4,22 @@
   tasks:
     - name: install python requests
       ansible.builtin.pip:
-        name:
-          - requests
-          - docker
+        name: docker
+        state: present
         executable: pip3.9
+        become: yes
+
+    - name: install python requests
+      ansible.builtin.pip:
+        name: requests
+        version: "<2.32.0"
+        state: present
+      executable: pip3.9
+      become: yes
+
+    - name: install python-docker
+      ansible.builtin.dnf:
+        name: python3-docker
 
     - name: Create a data container
       community.docker.docker_container:
