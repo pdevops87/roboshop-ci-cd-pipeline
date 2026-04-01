@@ -24,9 +24,6 @@
         state: started
         recreate: true
         privileged: true
-        user: "{{ myuser }}:998"
-        groups:
-          - "998"
         env:
           URL: "{{ URL }}"
           TOKEN: "{{ TOKEN }}"
