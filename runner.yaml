@@ -1,8 +1,12 @@
 - name: run a docker container
-  hosts: localhost
+  hosts: all
   tasks:
-    - name: Install python requests
-      ansible.builtin.shell: pip3.9 install requests
+    - name: install python requests
+      ansible.builtin.pip:
+        name:
+          - requests
+          - docker
+        executable: pip3.9
 
     - name: Create a data container
       community.docker.docker_container:
@@ -10,11 +14,10 @@
         image: pavanidevops78/kubernetes:runner
         state: started
         recreate: true
-        docker_host: unix:///var/run/docker.sock
         env:
           URL: "{{ URL }}"
           TOKEN: "{{ TOKEN }}"
-          NAME: "{{ item }}"
+          NAME: "{{ NAME }}"
       loop:
         - runner1
         - runner2
