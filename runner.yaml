@@ -14,7 +14,7 @@
         name: requests
         version: "<2.32.0"
         state: present
-      executable: pip3.9
+        executable: pip3.9
       become: yes
 
     - name: install python-docker
