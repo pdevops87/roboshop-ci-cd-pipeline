@@ -2,12 +2,12 @@
   hosts: localhost
   become: false
   tasks:
-    - name: install python requests
+    - name: install python docker
       ansible.builtin.pip:
         name: docker
         state: present
         executable: pip3.9
-        become: yes
+      become: yes
 
     - name: install python requests
       ansible.builtin.pip:
