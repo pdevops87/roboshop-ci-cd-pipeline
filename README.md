@@ -62,3 +62,8 @@ gh api user --jq '.id' /user
 
 first install github-cli
 run .sh
+
+
+*************************************************
+dev,QA,UAT,Prod should not do automatically 
+someone has to take control and then to run 
