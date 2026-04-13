@@ -1,6 +1,6 @@
 FROM                 docker.io/redhat/ubi9
 RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-RUN                  dnf install -y  docker-ce-cli  libicu unzip
+RUN                  dnf install -y  docker-ce-cli  libicu unzip maven
 RUN                  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
                      unzip awscliv2.zip && \
                      ./aws/install
