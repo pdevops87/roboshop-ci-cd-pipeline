@@ -67,3 +67,48 @@ run .sh
 *************************************************
 dev,QA,UAT,Prod should not do automatically 
 someone has to take control and then to run 
+
+
+
+✔ Git change = update in repo files
+✔ Sync = apply those changes to Kubernetes (create/update/delete)
+
+kubectl → sends YAML → Kubernetes API → EKS creates resources
+
+helm    → generates YAML → Kubernetes API → EKS creates resources
+
+
+argocd:
+=======
+1. install argocd
+   helm repo add argo https://argoproj.github.io/argo-helm
+   helm repo update
+2. install chart:
+
+[//]: # (   kubectl create namespace argocd)
+   helm install argocd argo/argo-cd 
+3. default username is "admin"
+4. to know the password: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+5. helm repo 
+6. helm repo list
+7. helm  search repo
+8. helm repo add (Local Client):
+9. helm install (EKS Cluster)
+ 
+kubectl get secrets
+kubectl get secrets argocd-initial-admin-secret -o yaml
+echo "password" | base64 --decode
+
+through UI:
+===========
+applicationName: cart
+projectName: default
+SYNC Policy: manual
+repo url: 
+path: .
+clusterURL:
+
+values.yaml: pass-template-values/cart.yaml
+
+install helm chart through terraform:
+======================================
