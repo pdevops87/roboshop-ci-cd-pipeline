@@ -8,7 +8,7 @@ RUN                  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com
                      chmod 700 get_helm.sh && \
                      ./get_helm.sh
 RUN                  curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-                     chmod +x /usr/local/bin/argocd
+RUN                  chmod +x /usr/local/bin/argocd
 RUN                  groupadd  docker || true
 RUN                  useradd -m runner
 RUN                  usermod -aG docker runner
