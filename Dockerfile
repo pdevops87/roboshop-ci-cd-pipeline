@@ -9,7 +9,7 @@ RUN                  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com
                      ./get_helm.sh
 RUN                  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
                      chmod +x kubectl && \
-                     sudo mv kubectl /usr/local/bin/
+                      mv kubectl /usr/local/bin/
 RUN                  curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 RUN                  chmod +x /usr/local/bin/argocd
 RUN                  groupadd  docker || true
