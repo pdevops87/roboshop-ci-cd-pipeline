@@ -14,7 +14,7 @@
           - docker
           - "requests<2.32.0"
         state: present
-        executable: pip3
+        executable: /usr/bin/pip3.11
       become: yes
 
     - name: Create a data container
@@ -34,3 +34,7 @@
         - runner1
         - runner2
         - runner3
+
+
+
+#/usr/bin/python3.11 -m pip install requests

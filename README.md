@@ -112,3 +112,14 @@ values.yaml: pass-template-values/cart.yaml
 
 install helm chart through terraform:
 ======================================
+
+
+aws login  credentials:
+========================
+
+Access key
+Secret access key
+
+AKIAQTJSZBXUPI6MM2UJ
+
+nVqxFAIn2hg2AZPMR0thzcjCfMG/DBvOzcJsP0sI
