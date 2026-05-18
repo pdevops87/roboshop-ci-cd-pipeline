@@ -123,3 +123,109 @@ Secret access key
 AKIAQTJSZBXUPI6MM2UJ
 
 nVqxFAIn2hg2AZPMR0thzcjCfMG/DBvOzcJsP0sI
+
+
+
+how to set continuous deployment in separate repos?
+go to roboshop-frontend-v1 ---> click on environment ----> add dev,qa,uat,prod,....
+like the same way which repos required to add repos
+
+* install gh cli environment:
+=============================
+* gh extension install katiem0/gh-environments
+* gh environments -h
+* gh environments list pdevops87 roboshop-frontend-v1
+* cat report-env.......
+* gh environment create --from-file report-env........csv
+* # Get a user's numerical ID
+*  gh api user --jq '.id'[The first one fetches your personal profile ID (User ID).]
+* The second one fetches that specific project's unique storage ID (Repo ID).[gh api repos/pdevops87/roboshop-frontend-v1 --jq '.id']
+* gh api user --jq '.login'
+gh api users/username --jq '.login'[username]
+gh api users/username --jq '.id'
+
+# Get an organization team's numerical ID
+gh api orgs/{org}/teams/{team_slug} --jq '.id'
+
+create      Create environments and metadata.
+list        Generate a report of environments and metadata.
+secrets     List and Create Environment secrets.
+variables   List and Create Environment variables.+
+
+keep in .sh
+===========
+1. first read a repo
+2. if a repo is empty, then should pass a msg as "repo is mandatory"
+3. type gh >>&/dev/null [gh is /usr/bin/gh]
+4. first check gh installed or not 
+5. if not installed , install gh cli env
+
+
+RepositoryName,RepositoryID,EnvironmentName,AdminBypass,WaitTimer,Reviewers,PreventSelfReview,BranchPolicyType,Branches,CustomDeploymentProtectionPolicy,SecretsTotalCount,VariablesTotalCount
+roboshop-frontend-v1,1178995516,dev,true,0,User;PavaniVemasani18;123148043,false,,,,0,0
+
+
+
+313  16/05/26 08:29:01 docker exec -it 682f4c94872b /bin/bash
+314  16/05/26 15:28:37 gh extension install katiem0/gh-environments
+315  16/05/26 15:28:48 gh environments -h
+316  16/05/26 15:29:07 gh environment list pdevops87 roboshop-frontend-v1
+317  16/05/26 15:30:16 gh environment list
+318  16/05/26 15:30:43 gh environment list --help
+319  16/05/26 15:31:51 gh environment list -h
+320  16/05/26 15:32:01 gh environments list -h
+321  16/05/26 15:32:25 gh environments list pdevops87 roboshop-frontend-v1
+322  16/05/26 15:33:07 gh environments list pdevops87 roboshop-frontend-v1 -o
+323  16/05/26 15:33:24 cat report-environments-20260516153308.csv
+324  16/05/26 15:33:55 gh environments list pdevops87 roboshop-frontend-v1 -o report-environment
+325  16/05/26 15:34:47 gh auth login
+326  16/05/26 15:35:31 gh environments list pdevops87 roboshop-frontend-v1
+327  16/05/26 15:36:00 git auth login
+328  16/05/26 15:36:08 git auth status
+329  16/05/26 15:36:17 gh auth status
+330  16/05/26 15:36:24 gh auth login
+331  16/05/26 15:42:02 https://github.com/pdevops87
+332  16/05/26 15:42:56 gh environments list pdevops87 roboshop-frontend-v1
+333  16/05/26 15:43:06 cat  report-environments-20260516154257.csv
+334  16/05/26 15:52:15 gh auth status
+335  16/05/26 15:52:24 gh auth login
+336  16/05/26 15:53:16 gh api users/username --jq
+337  16/05/26 15:53:52 gh api users/username --jq '.id'
+338  16/05/26 15:54:22 gh api user --jq '.id'
+339  16/05/26 15:54:59 gh api user --jq '.login'
+340  16/05/26 15:57:10 echo $?
+
+
+
+github.com
+✓ Logged in to github.com account PavaniVemasani18 (/root/.config/gh/hosts.yml)
+- Active account: true
+- Git operations protocol: https
+- Token: gho_************************************
+- Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+
+for i in RepositoryName RepositoryID EnvironmentName AdminBypass WaitTimer Reviewers PreventSelfReview BranchPolicyType Branches CustomDeploymentProtectionPolicy SecretsTotalCount VariablesTotalCount
+for env in dev qa prod; do echo "$env" "$i"; done
+do
+done
+
+
+for i in "RepositoryName,RepositoryID,EnvironmentName,AdminBypass,WaitTimer,Reviewers,PreventSelfReview,BranchPolicyType,Branches,CustomDeploymentProtectionPolicy,SecretsTotalCount,VariablesTotalCount"; do
+for j in "roboshop-frontend-v1,1178995516,dev,true,0,User;PavaniVemasani18;123148043,false,,,,0,0"; do
+for env in dev prod; do
+echo "$i" "$j" "$env" >>/tmp/github-environment.csv
+done
+done
+done
+
+
+tool: roboshop-app-repos-env-create
+find / -name wsgi
+
+
+GitHub (Code) ──> CI Pipeline/Docker (Builds Image & Creates Unique ID) ──> AWS ECR (Stores Image)
+│
+ArgoCD (Fetches Unique ID from ECR) ───────────────────────────────────────────┘
+│
+▼
+EKS Cluster (Runs the Pods)

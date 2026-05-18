@@ -1,17 +1,18 @@
 FROM                 docker.io/redhat/ubi9
 RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 RUN                  dnf install -y  docker-ce-cli  libicu unzip maven less
+# install aws cli
 RUN                  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
                      unzip awscliv2.zip && \
                      ./aws/install
-RUN                  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \
-                     chmod 700 get_helm.sh && \
-                     ./get_helm.sh
+#   install helm
+RUN                  curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 #                      If any command fails, the script stops immediately (set -eux)
 RUN                  set -eux; \
                      curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; \
                      install -m 0755 kubectl /usr/local/bin/kubectl; \
                      rm kubectl
+#  download and install argocd
 RUN                  curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 RUN                  chmod +x /usr/local/bin/argocd
 RUN                  groupadd  docker || true
